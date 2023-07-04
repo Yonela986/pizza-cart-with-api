@@ -1,0 +1,125 @@
+<!DOCTYPE html> 
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style.css">
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    </head>
+    <body>
+        <div x-data="{title: 'Perfect Pizza'}" class="main-topic">
+         <h1 x-html="title"></h1>
+        
+        </div>
+        <section class="main">
+          <div x-data="{modal: false, totalCost: 0, smallTotal: 0, 
+            mediumTotal: 0, largeTotal: 0,  pizzaTitleS: 'Small', 
+            pizzaTitleM: 'Medium', pizzaTitleL: 'Large', Message: '',
+            totalCostTitle: 'Total Cost', successMessage: 'Enjoy your pizza/s',
+            failMessage: 'Sorry- that is not enough money', 
+            payAmount: 0 }" class="tabs">
+
+            <section class="cart">
+              <div x-data="{title: 'Shopping Cart'}">
+                <p x-text="title"></p>
+              </div>
+        <div x-data="{titles: 'Small' }" class="pizzaTitleSmall">
+          <span x-text="titles" ></span>
+          <button class="addPizzaBtn" @click="if(smallTotal += 28)">+</button>
+          <button class="subPizzaBtn" @click="if(smallTotal > 0){ smallTotal -= 28}">-</button>
+          <span class="smallTotal" x-text="smallTotal"></span>
+        </div>
+        <div x-data="{titles: 'Medium' }">
+          <p x-text="titles"></p>
+          <button @click="count++">+</button>
+          <button @click="count--">-</button>
+        </div>
+        <div x-data="{titles: 'Large' }">
+          <p x-text="titles"></p>
+          <button @click="count++">+</button>
+          <button @click="count--">-</button>
+    
+        </div>
+            </section>
+    
+        </section>
+      </div>
+      <div>
+        <span x-text="totalCostTitle" style="padding-right: 1.9em;"></span>
+        <span class="totalCost" x-text=" totalCost = smallTotal + mediumTotal + largeTotal"></span>
+    </div>
+    <template x-if=" totalCost > 0">
+      <div class="orderPizza" x-show="true" style="padding-bottom: 1em;">
+          <button class="checkOutBtn" @click="modal=true">Checkout</button>
+      </div>
+  </template>
+  <div x-show="modal" @click.outside="modal = false" class="payment">
+    <div  x-text="Message" style="background-color: white;
+    font-size:larger; margin-bottom: 1em;"></div>
+    <span style="padding-top: 1em;">Payment Amount:</span>
+    <input class="payAmountTxt" type="text" x-model="payAmount"
+    style="font-size: small;">
+    <div class="orderPizza" style="padding-bottom: 1em;">
+        <button class="orderBtn" @click="if(payAmount == totalCost){ 
+            Message=successMessage; }
+            else{ Message=failMessage; }">Pay</button>
+    </div> 
+        <div x-data class="pizzas">
+          <div x-data class="pizza small">
+              <h2>Small Pizza</h2>
+              <img src="../pizza.png" width=80>
+              <h4 class="price"> R29.99 </h4>
+              <div x-data >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, commodi, dolorum, a possimus iure
+                  tempora molestias dolorem vitae
+                  voluptate non fugit assumenda perspiciatis sed odio.
+              </div>
+              <div class="orderPizza">
+                <button class="orderBtn" @click="if(smallTotal == 0){ 
+                    smallTotal += 28;}">Buy</button>  
+            </div>
+          </div>
+      
+          <div x-data class="pizza medium">
+            
+              <h2>Medium Pizza</h2>
+              <img src="../pizza.png" width=80>
+              <h4 class="price"> R49.99 </h4>
+              <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, commodi, dolorum, a possimus iure
+                  tempora molestias dolorem vitae
+                  voluptate non fugit assumenda perspiciatis sed odio.
+              </div>
+          </div>
+       
+          <div class="pizza large">
+            
+              <h2>Large Pizza</h2>
+              <img src="../pizza.png" width=80>
+              <h4 class="price"> R89.99</h4>
+              <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, commodi, dolorum, a possimus iure
+                  tempora molestias dolorem vitae
+                  voluptate non fugit assumenda perspiciatis sed odio.
+              </div>
+          </div>
+      </div>
+      <div x-init="console.log('Init')">
+         
+      </div>
+      <div x-data="{
+        init(){
+          console.log('I am initialized');
+        }
+      }">
+    </div>
+               <footer x-data class="pizza contact_details">
+                
+                  <h2>Contact Details</h2>
+
+               </footer> 
+      
+    
+    </body>
+</html>

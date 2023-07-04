@@ -1,0 +1,50 @@
+body{
+    background-color: #FDE74C; 
+  font-family: 'Courier New', Courier, monospace;
+ }
+ .main-topic {
+   text-align: center;
+   font-size: large;
+   padding-top: 1%;
+ }
+ .pizza {
+    /*Box model*/
+    padding: 2em;
+    border: 1px;
+    margin: 2em;
+    border-radius: 1em;
+ }
+ .tabs {
+   text-align: center;
+    margin: 2em;
+    font-size:large
+ }
+ .pizzaTitleSmall {
+   padding-right: 2.5em;
+ }
+ .payment{
+   text-align: center;
+ }
+ .medium{
+    background-color: #E55934;
+    
+ }
+ .small{
+    background-color: #FA7921;
+ }
+ .large{
+    background-color: #9BC53D;
+ }
+ .contact_details {
+    background-color: #9BC53D;
+ }
+ @media (min-width: 960px){
+ .pizzas
+ {
+    display: flex;
+ }
+ }
+ /* .prize {
+    
+ } */
+ 
